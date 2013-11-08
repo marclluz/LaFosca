@@ -7,16 +7,41 @@
 //
 
 #import "LFAppDelegate.h"
+#import "LFLoginViewController.h"
 
 @implementation LFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self warmUpRootController];
+    [self customizeAppearance];
+    self.window.rootViewController = self.navigationController;
+    
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void) warmUpRootController
+{
+    LFLoginViewController* loginViewController = [[LFLoginViewController alloc] initWithNibName:nil bundle:nil];
+    [loginViewController.view setBackgroundColor:BASE_COLOR];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void) customizeAppearance
+{
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIFont systemFontOfSize:18],
+                                NSFontAttributeName, nil];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

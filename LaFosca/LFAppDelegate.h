@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LFLoginViewController.h"
 
 @interface LFAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UINavigationController *navigationController;
 
 @end

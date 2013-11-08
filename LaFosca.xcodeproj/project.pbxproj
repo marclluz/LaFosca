@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA2E05A39BF34EE6B8FE19C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2DAD223B544C87A8314AB7 /* libPods.a */; };
+		D5023BEC182D6CFE0090BA88 /* LFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5023BEA182D6CFE0090BA88 /* LFLoginViewController.m */; };
+		D5023BED182D6CFE0090BA88 /* LFLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5023BEB182D6CFE0090BA88 /* LFLoginViewController.xib */; };
+		D5B8B624182D79B100812482 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B623182D79B100812482 /* sun@2x.png */; };
 		D5D1ECFC182D625A0081066D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFB182D625A0081066D /* Foundation.framework */; };
 		D5D1ECFE182D625A0081066D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFD182D625A0081066D /* CoreGraphics.framework */; };
 		D5D1ED00182D625A0081066D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFF182D625A0081066D /* UIKit.framework */; };
@@ -32,6 +36,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68AB0E8DAE7341019D57DBC5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		BB2DAD223B544C87A8314AB7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5023BE9182D6CFE0090BA88 /* LFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLoginViewController.h; sourceTree = "<group>"; };
+		D5023BEA182D6CFE0090BA88 /* LFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLoginViewController.m; sourceTree = "<group>"; };
+		D5023BEB182D6CFE0090BA88 /* LFLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFLoginViewController.xib; sourceTree = "<group>"; };
+		D5023BEF182D6F340090BA88 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		D5B8B623182D79B100812482 /* sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun@2x.png"; sourceTree = "<group>"; };
 		D5D1ECF8182D625A0081066D /* LaFosca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaFosca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D1ECFB182D625A0081066D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5D1ECFD182D625A0081066D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,6 +69,7 @@
 				D5D1ECFE182D625A0081066D /* CoreGraphics.framework in Frameworks */,
 				D5D1ED00182D625A0081066D /* UIKit.framework in Frameworks */,
 				D5D1ECFC182D625A0081066D /* Foundation.framework in Frameworks */,
+				CA2E05A39BF34EE6B8FE19C5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +86,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D5023BE6182D6CC30090BA88 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5D1ED0A182D625A0081066D /* LFAppDelegate.h */,
+				D5D1ED0B182D625A0081066D /* LFAppDelegate.m */,
+				D5023BE9182D6CFE0090BA88 /* LFLoginViewController.h */,
+				D5023BEA182D6CFE0090BA88 /* LFLoginViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D5023BE7182D6CD00090BA88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D5023BEB182D6CFE0090BA88 /* LFLoginViewController.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D5023BE8182D6CD70090BA88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D5023BEE182D6F210090BA88 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D5023BEF182D6F340090BA88 /* utils.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		D5B8B622182D79AA00812482 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D5B8B623182D79B100812482 /* sun@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		D5D1ECEF182D62590081066D = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +135,7 @@
 				D5D1ED1A182D625A0081066D /* LaFoscaTests */,
 				D5D1ECFA182D625A0081066D /* Frameworks */,
 				D5D1ECF9182D625A0081066D /* Products */,
+				68AB0E8DAE7341019D57DBC5 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +155,7 @@
 				D5D1ECFD182D625A0081066D /* CoreGraphics.framework */,
 				D5D1ECFF182D625A0081066D /* UIKit.framework */,
 				D5D1ED14182D625A0081066D /* XCTest.framework */,
+				BB2DAD223B544C87A8314AB7 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -107,8 +163,11 @@
 		D5D1ED01182D625A0081066D /* LaFosca */ = {
 			isa = PBXGroup;
 			children = (
-				D5D1ED0A182D625A0081066D /* LFAppDelegate.h */,
-				D5D1ED0B182D625A0081066D /* LFAppDelegate.m */,
+				D5B8B622182D79AA00812482 /* Images */,
+				D5023BEE182D6F210090BA88 /* Utils */,
+				D5023BE8182D6CD70090BA88 /* Models */,
+				D5023BE6182D6CC30090BA88 /* Controllers */,
+				D5023BE7182D6CD00090BA88 /* Views */,
 				D5D1ED0D182D625A0081066D /* Images.xcassets */,
 				D5D1ED02182D625A0081066D /* Supporting Files */,
 			);
@@ -151,9 +210,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5D1ED24182D625A0081066D /* Build configuration list for PBXNativeTarget "LaFosca" */;
 			buildPhases = (
+				A53858C60065496CAE4940C6 /* Check Pods Manifest.lock */,
 				D5D1ECF4182D625A0081066D /* Sources */,
 				D5D1ECF5182D625A0081066D /* Frameworks */,
 				D5D1ECF6182D625A0081066D /* Resources */,
+				F162AEEA5D774B80ACE307B8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,6 +281,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5023BED182D6CFE0090BA88 /* LFLoginViewController.xib in Resources */,
+				D5B8B624182D79B100812482 /* sun@2x.png in Resources */,
 				D5D1ED06182D625A0081066D /* InfoPlist.strings in Resources */,
 				D5D1ED0E182D625A0081066D /* Images.xcassets in Resources */,
 			);
@@ -235,6 +298,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A53858C60065496CAE4940C6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F162AEEA5D774B80ACE307B8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D5D1ECF4182D625A0081066D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -242,6 +338,7 @@
 			files = (
 				D5D1ED0C182D625A0081066D /* LFAppDelegate.m in Sources */,
 				D5D1ED08182D625A0081066D /* main.m in Sources */,
+				D5023BEC182D6CFE0090BA88 /* LFLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,26 +454,36 @@
 		};
 		D5D1ED25182D625A0081066D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68AB0E8DAE7341019D57DBC5 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Marc Llucià (GUGNL8S32J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaFosca/LaFosca-Prefix.pch";
 				INFOPLIST_FILE = "LaFosca/LaFosca-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "73E02A55-5EA2-4C24-B794-FC3414C4A84B";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		D5D1ED26182D625A0081066D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68AB0E8DAE7341019D57DBC5 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Marc Llucià (GUGNL8S32J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaFosca/LaFosca-Prefix.pch";
 				INFOPLIST_FILE = "LaFosca/LaFosca-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "73E02A55-5EA2-4C24-B794-FC3414C4A84B";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -442,6 +549,7 @@
 				D5D1ED26182D625A0081066D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5D1ED27182D625A0081066D /* Build configuration list for PBXNativeTarget "LaFoscaTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +558,7 @@
 				D5D1ED29182D625A0081066D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
