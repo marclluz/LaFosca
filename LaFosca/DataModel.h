@@ -15,5 +15,6 @@
 
 + (instancetype)sharedInstance;
 
+- (void)setUser:(LFUser *)newUser;
 
 @end

@@ -27,4 +27,13 @@
     
 }
 
+- (void)setUser:(LFUser *)newUser
+{
+  
+    _user = newUser;
+    
+    //We have a new token
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenChanged" object:self];
+}
+
 @end
