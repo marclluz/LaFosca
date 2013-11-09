@@ -40,6 +40,8 @@
 
 - (IBAction)loginButtonPressed:(id)sender {
     
+    [self setButtonsEnabled:NO];
+    
     LFAPIClient* client = [LFAPIClient sharedClient];
     
     [client setRequestSerializer:[AFHTTPRequestSerializer serializer]];
@@ -51,16 +53,24 @@
         LFUser* user = [MTLJSONAdapter modelOfClass:LFUser.class fromJSONDictionary:responseObject error:&error];
         
         [[DataModel sharedInstance] setUser:user];
-        
+        [self setButtonsEnabled:YES];
+
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Parece que hay un error con los datos introducidos, por favor revisa tu usuario y contraseña" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [errorAlertView show];
-        
+        [self setButtonsEnabled:YES];
+
     }];
     
+}
+
+- (void) setButtonsEnabled:(BOOL) boolean
+{
+    [self.loginButton setEnabled:boolean];
+    [self.registerButton setEnabled:boolean];
 }
 
 - (IBAction)registerButtonPressed:(id)sender {

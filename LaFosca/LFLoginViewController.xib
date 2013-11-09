@@ -6,8 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LFLoginViewController">
             <connections>
+                <outlet property="loginButton" destination="FU2-w1-hIj" id="rZb-9j-jNZ"/>
                 <outlet property="logoImageView" destination="buj-Nv-Gpz" id="RQI-jp-c9w"/>
                 <outlet property="passwordTextField" destination="R43-b7-0sW" id="Qbf-JE-x8U"/>
+                <outlet property="registerButton" destination="6dO-2k-t5T" id="pj5-vK-mLw"/>
                 <outlet property="userTextField" destination="GGE-9U-7v8" id="fZH-q9-QiY"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
