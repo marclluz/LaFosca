@@ -8,11 +8,16 @@
 
 #import "LFAppDelegate.h"
 #import "LFLoginViewController.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation LFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self warmUpRootController];

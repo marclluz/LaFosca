@@ -11,6 +11,7 @@
 
 @interface LFLoginViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 

@@ -6,8 +6,11 @@
 //  Copyright (c) 2013 Marc Llucià. All rights reserved.
 //
 
+#import "LFUser.h"
 #import "LFLoginViewController.h"
 #import "LFAPIClient.h"
+#import "DataModel.h"
+
 @interface LFLoginViewController ()
 
 @end
@@ -41,11 +44,20 @@
     
     [client setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     [client.requestSerializer setAuthorizationHeaderFieldWithUsername:self.userTextField.text password:self.passwordTextField.text];
-
+    
     [client GET:@"user" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSError *error = nil;
+        LFUser* user = [MTLJSONAdapter modelOfClass:LFUser.class fromJSONDictionary:responseObject error:&error];
+        
+        [[DataModel sharedInstance] setUser:user];
         
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Parece que hay un error con los datos introducidos, por favor revisa tu usuario y contraseña" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [errorAlertView show];
         
     }];
     

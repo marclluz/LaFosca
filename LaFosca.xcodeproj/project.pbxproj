@@ -12,6 +12,8 @@
 		D5023BED182D6CFE0090BA88 /* LFLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5023BEB182D6CFE0090BA88 /* LFLoginViewController.xib */; };
 		D5B8B624182D79B100812482 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B623182D79B100812482 /* sun@2x.png */; };
 		D5B8B628182DAE9900812482 /* LFAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B627182DAE9900812482 /* LFAPIClient.m */; };
+		D5B8B62B182DBA6900812482 /* LFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B62A182DBA6900812482 /* LFUser.m */; };
+		D5B8B62E182E42B400812482 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B62D182E42B400812482 /* DataModel.m */; };
 		D5D1ECFC182D625A0081066D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFB182D625A0081066D /* Foundation.framework */; };
 		D5D1ECFE182D625A0081066D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFD182D625A0081066D /* CoreGraphics.framework */; };
 		D5D1ED00182D625A0081066D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFF182D625A0081066D /* UIKit.framework */; };
@@ -46,6 +48,10 @@
 		D5B8B623182D79B100812482 /* sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun@2x.png"; sourceTree = "<group>"; };
 		D5B8B626182DAE9900812482 /* LFAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFAPIClient.h; sourceTree = "<group>"; };
 		D5B8B627182DAE9900812482 /* LFAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFAPIClient.m; sourceTree = "<group>"; };
+		D5B8B629182DBA6900812482 /* LFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUser.h; sourceTree = "<group>"; };
+		D5B8B62A182DBA6900812482 /* LFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUser.m; sourceTree = "<group>"; };
+		D5B8B62C182E42B400812482 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		D5B8B62D182E42B400812482 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		D5D1ECF8182D625A0081066D /* LaFosca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaFosca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D1ECFB182D625A0081066D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5D1ECFD182D625A0081066D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,6 +117,10 @@
 		D5023BE8182D6CD70090BA88 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D5B8B629182DBA6900812482 /* LFUser.h */,
+				D5B8B62A182DBA6900812482 /* LFUser.m */,
+				D5B8B62C182E42B400812482 /* DataModel.h */,
+				D5B8B62D182E42B400812482 /* DataModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -353,6 +363,8 @@
 				D5D1ED08182D625A0081066D /* main.m in Sources */,
 				D5023BEC182D6CFE0090BA88 /* LFLoginViewController.m in Sources */,
 				D5B8B628182DAE9900812482 /* LFAPIClient.m in Sources */,
+				D5B8B62B182DBA6900812482 /* LFUser.m in Sources */,
+				D5B8B62E182E42B400812482 /* DataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
