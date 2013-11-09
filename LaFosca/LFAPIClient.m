@@ -17,6 +17,7 @@ static NSString * const LFAPIBaseURLString = @"http://lafosca-beach.herokuapp.co
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [[LFAPIClient alloc] initWithBaseURL:[NSURL URLWithString:LFAPIBaseURLString]];
+
     });
     
     return _sharedClient;
