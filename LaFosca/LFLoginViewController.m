@@ -10,6 +10,7 @@
 #import "LFLoginViewController.h"
 #import "LFAPIClient.h"
 #import "DataModel.h"
+#import "LFRegisterViewController.h"
 
 @interface LFLoginViewController ()
 
@@ -29,7 +30,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitle:@"La Fosca"];
+    [self setTitle:@""];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,5 +87,10 @@
 }
 
 - (IBAction)registerButtonPressed:(id)sender {
+    
+    LFRegisterViewController* registerViewController = [[LFRegisterViewController alloc] init];
+    
+    [self.navigationController pushViewController:registerViewController animated:YES];
+    
 }
 @end

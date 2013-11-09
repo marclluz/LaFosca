@@ -33,8 +33,6 @@
     LFLoginViewController* loginViewController = [[LFLoginViewController alloc] initWithNibName:nil bundle:nil];
     [loginViewController.view setBackgroundColor:BASE_COLOR];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
-    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void) customizeAppearance
@@ -43,8 +41,8 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [UIFont systemFontOfSize:18],
-                                NSFontAttributeName, nil];
+                                [UIFont boldSystemFontOfSize:18],
+                                NSFontAttributeName, [UIColor whiteColor],NSForegroundColorAttributeName, nil];
     
     [[UINavigationBar appearance] setTitleTextAttributes:attributes];
 }
