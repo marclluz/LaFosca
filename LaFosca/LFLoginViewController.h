@@ -11,4 +11,10 @@
 
 @interface LFLoginViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *userTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+- (IBAction)loginButtonPressed:(id)sender;
+- (IBAction)registerButtonPressed:(id)sender;
+
 @end

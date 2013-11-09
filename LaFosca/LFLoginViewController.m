@@ -7,7 +7,7 @@
 //
 
 #import "LFLoginViewController.h"
-
+#import "LFAPIClient.h"
 @interface LFLoginViewController ()
 
 @end
@@ -35,4 +35,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)loginButtonPressed:(id)sender {
+    
+    LFAPIClient* client = [LFAPIClient sharedClient];
+    
+    [client setRequestSerializer:[AFHTTPRequestSerializer serializer]];
+    [client.requestSerializer setAuthorizationHeaderFieldWithUsername:self.userTextField.text password:self.passwordTextField.text];
+
+    [client GET:@"user" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
+}
+
+- (IBAction)registerButtonPressed:(id)sender {
+}
 @end
