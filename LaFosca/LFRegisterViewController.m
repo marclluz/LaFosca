@@ -10,6 +10,7 @@
 #import "LFAPIClient.h"
 #import "LFUser.h"
 #import "DataModel.h"
+#import "LFBeachViewController.h"
 
 @interface LFRegisterViewController ()
 
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                              forBarMetrics:UIBarMetricsDefault];
+    [self setNeedsStatusBarAppearanceUpdate];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     self.title = @"Registro";
@@ -39,6 +41,10 @@
     [self.passwordTextField setDelegate:self];
     [self.confirmPasswordTextfield setDelegate:self];
 
+}
+
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,8 +101,15 @@
         NSError *error = nil;
         LFUser* user = [MTLJSONAdapter modelOfClass:LFUser.class fromJSONDictionary:responseObject error:&error];
         
-        [[DataModel sharedInstance] setUser:user];
-
+        //if we get the user without errors we push the beach view
+        if (user&&!error) {
+            [[DataModel sharedInstance] setUser:user];
+            LFBeachViewController *beachViewController = [[LFBeachViewController alloc] init];
+            UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:beachViewController];
+            
+            [navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+            [self presentViewController:navController animated:YES completion:nil];
+        }
     
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

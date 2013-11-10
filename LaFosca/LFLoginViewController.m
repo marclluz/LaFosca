@@ -11,6 +11,7 @@
 #import "LFAPIClient.h"
 #import "DataModel.h"
 #import "LFRegisterViewController.h"
+#import "LFBeachViewController.h"
 
 @interface LFLoginViewController ()
 
@@ -30,19 +31,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
     [self setTitle:@""];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +71,17 @@
         NSError *error = nil;
         LFUser* user = [MTLJSONAdapter modelOfClass:LFUser.class fromJSONDictionary:responseObject error:&error];
         
-        [[DataModel sharedInstance] setUser:user];
+        //if we get the user without errors we push the beach view
+        if (user&&!error)
+        {
+            [[DataModel sharedInstance] setUser:user];
+            
+            LFBeachViewController *beachViewController = [[LFBeachViewController alloc] init];
+            UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:beachViewController];
+            [navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+            [self presentViewController:navController animated:YES completion:nil];
+        }
+        
         [self setButtonsEnabled:YES];
 
 
@@ -89,7 +105,6 @@
 - (IBAction)registerButtonPressed:(id)sender {
     
     LFRegisterViewController* registerViewController = [[LFRegisterViewController alloc] init];
-    
     [self.navigationController pushViewController:registerViewController animated:YES];
     
 }

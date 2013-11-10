@@ -16,6 +16,13 @@
 		D5B8B62E182E42B400812482 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B62D182E42B400812482 /* DataModel.m */; };
 		D5B8B631182E48E200812482 /* LFRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B630182E48E200812482 /* LFRegisterViewController.m */; };
 		D5B8B633182E48FB00812482 /* LFRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B632182E48FB00812482 /* LFRegisterViewController.xib */; };
+		D5B8B637182EC16200812482 /* LFBeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B635182EC16200812482 /* LFBeachViewController.m */; };
+		D5B8B638182EC16200812482 /* LFBeachViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B636182EC16200812482 /* LFBeachViewController.xib */; };
+		D5B8B646182ECD6A00812482 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B644182ECD6A00812482 /* sun.png */; };
+		D5B8B64D182FA98000812482 /* lafoscabeach.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B64C182FA98000812482 /* lafoscabeach.jpg */; };
+		D5B8B64F182FA98500812482 /* lafoscabeach@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B64E182FA98500812482 /* lafoscabeach@2x.jpg */; };
+		D5B8B653182FAAB200812482 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B652182FAAB200812482 /* circle.png */; };
+		D5B8B655182FAAE500812482 /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B654182FAAE500812482 /* circle@2x.png */; };
 		D5D1ECFC182D625A0081066D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFB182D625A0081066D /* Foundation.framework */; };
 		D5D1ECFE182D625A0081066D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFD182D625A0081066D /* CoreGraphics.framework */; };
 		D5D1ED00182D625A0081066D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFF182D625A0081066D /* UIKit.framework */; };
@@ -57,6 +64,14 @@
 		D5B8B62F182E48E200812482 /* LFRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRegisterViewController.h; sourceTree = "<group>"; };
 		D5B8B630182E48E200812482 /* LFRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRegisterViewController.m; sourceTree = "<group>"; };
 		D5B8B632182E48FB00812482 /* LFRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFRegisterViewController.xib; sourceTree = "<group>"; };
+		D5B8B634182EC16200812482 /* LFBeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFBeachViewController.h; sourceTree = "<group>"; };
+		D5B8B635182EC16200812482 /* LFBeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFBeachViewController.m; sourceTree = "<group>"; };
+		D5B8B636182EC16200812482 /* LFBeachViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFBeachViewController.xib; sourceTree = "<group>"; };
+		D5B8B644182ECD6A00812482 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
+		D5B8B64C182FA98000812482 /* lafoscabeach.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lafoscabeach.jpg; sourceTree = "<group>"; };
+		D5B8B64E182FA98500812482 /* lafoscabeach@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lafoscabeach@2x.jpg"; sourceTree = "<group>"; };
+		D5B8B652182FAAB200812482 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		D5B8B654182FAAE500812482 /* circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@2x.png"; sourceTree = "<group>"; };
 		D5D1ECF8182D625A0081066D /* LaFosca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaFosca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D1ECFB182D625A0081066D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5D1ECFD182D625A0081066D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +124,8 @@
 				D5023BEA182D6CFE0090BA88 /* LFLoginViewController.m */,
 				D5B8B62F182E48E200812482 /* LFRegisterViewController.h */,
 				D5B8B630182E48E200812482 /* LFRegisterViewController.m */,
+				D5B8B634182EC16200812482 /* LFBeachViewController.h */,
+				D5B8B635182EC16200812482 /* LFBeachViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -118,6 +135,7 @@
 			children = (
 				D5023BEB182D6CFE0090BA88 /* LFLoginViewController.xib */,
 				D5B8B632182E48FB00812482 /* LFRegisterViewController.xib */,
+				D5B8B636182EC16200812482 /* LFBeachViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -144,7 +162,12 @@
 		D5B8B622182D79AA00812482 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D5B8B64C182FA98000812482 /* lafoscabeach.jpg */,
+				D5B8B64E182FA98500812482 /* lafoscabeach@2x.jpg */,
+				D5B8B644182ECD6A00812482 /* sun.png */,
 				D5B8B623182D79B100812482 /* sun@2x.png */,
+				D5B8B654182FAAE500812482 /* circle@2x.png */,
+				D5B8B652182FAAB200812482 /* circle.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -312,11 +335,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B8B646182ECD6A00812482 /* sun.png in Resources */,
+				D5B8B638182EC16200812482 /* LFBeachViewController.xib in Resources */,
 				D5023BED182D6CFE0090BA88 /* LFLoginViewController.xib in Resources */,
+				D5B8B655182FAAE500812482 /* circle@2x.png in Resources */,
+				D5B8B64D182FA98000812482 /* lafoscabeach.jpg in Resources */,
 				D5B8B633182E48FB00812482 /* LFRegisterViewController.xib in Resources */,
 				D5B8B624182D79B100812482 /* sun@2x.png in Resources */,
 				D5D1ED06182D625A0081066D /* InfoPlist.strings in Resources */,
+				D5B8B653182FAAB200812482 /* circle.png in Resources */,
 				D5D1ED0E182D625A0081066D /* Images.xcassets in Resources */,
+				D5B8B64F182FA98500812482 /* lafoscabeach@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +403,7 @@
 				D5B8B628182DAE9900812482 /* LFAPIClient.m in Sources */,
 				D5B8B62B182DBA6900812482 /* LFUser.m in Sources */,
 				D5B8B62E182E42B400812482 /* DataModel.m in Sources */,
+				D5B8B637182EC16200812482 /* LFBeachViewController.m in Sources */,
 				D5B8B631182E48E200812482 /* LFRegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
