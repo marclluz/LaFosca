@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Marc Llucià. All rights reserved.
 //
 
-#import "MTLModel.h"
 #import <Mantle/Mantle.h>
 
 @interface LFUser : MTLModel <MTLJSONSerializing>

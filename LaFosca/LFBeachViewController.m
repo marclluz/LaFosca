@@ -7,6 +7,7 @@
 //
 
 #import "LFBeachViewController.h"
+#import "LFAPIClient.h"
 
 @interface LFBeachViewController ()
 
@@ -31,6 +32,8 @@
     [self.navigationController.navigationBar setTintColor:BASE_COLOR];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
     [self setTableViewHeader];
+    
+    [self getBeachData];
 }
 
 - (void) setNavigationBarButtons
@@ -44,6 +47,22 @@
 
 - (UIStatusBarStyle) preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
+}
+
+- (void) getBeachData
+{
+    LFAPIClient* client = [LFAPIClient sharedClient];
+    
+    [client GET:@"state" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSError *error = nil;
+
+        beach = [MTLJSONAdapter modelOfClass:LFBeach.class fromJSONDictionary:responseObject error:&error];
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

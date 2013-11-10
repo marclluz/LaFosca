@@ -38,9 +38,10 @@ static NSString * const LFAPIBaseURLString = @"http://lafosca-beach.herokuapp.co
 
 
 - (void)setTokenHeader {
-    NSString *token = [[[DataModel sharedInstance]user]token];
+    NSString *token = [NSString stringWithFormat:@"Token token=\"%@\"", [[[DataModel sharedInstance]user]token]];
+    
     AFHTTPRequestSerializer* serializer = [AFHTTPRequestSerializer serializer];
-    [serializer setValue:token forHTTPHeaderField:@"token"];
+    [serializer setValue:token forHTTPHeaderField:@"Authorization"];
     self.requestSerializer = serializer;
 
 }

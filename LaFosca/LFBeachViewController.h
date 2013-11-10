@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LFBeach.h"
 @interface LFBeachViewController : UIViewController <UIScrollViewDelegate>
+{
+    LFBeach* beach;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 
