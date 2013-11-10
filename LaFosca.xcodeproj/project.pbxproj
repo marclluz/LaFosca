@@ -27,6 +27,9 @@
 		D5B8B659182FAE6800812482 /* flag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B657182FAE6800812482 /* flag@2x.png */; };
 		D5B8B65C182FAEF900812482 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B65B182FAEF900812482 /* UIImage+Tint.m */; };
 		D5B8B65F182FB0EF00812482 /* LFBeach.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B65E182FB0EF00812482 /* LFBeach.m */; };
+		D5B8B662182FB6A000812482 /* LFHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B661182FB6A000812482 /* LFHeaderView.m */; };
+		D5B8B667182FBCE100812482 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B665182FBCE100812482 /* lock.png */; };
+		D5B8B668182FBCE100812482 /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B666182FBCE100812482 /* lock@2x.png */; };
 		D5D1ECFC182D625A0081066D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFB182D625A0081066D /* Foundation.framework */; };
 		D5D1ECFE182D625A0081066D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFD182D625A0081066D /* CoreGraphics.framework */; };
 		D5D1ED00182D625A0081066D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFF182D625A0081066D /* UIKit.framework */; };
@@ -82,6 +85,10 @@
 		D5B8B65B182FAEF900812482 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		D5B8B65D182FB0EF00812482 /* LFBeach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFBeach.h; sourceTree = "<group>"; };
 		D5B8B65E182FB0EF00812482 /* LFBeach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFBeach.m; sourceTree = "<group>"; };
+		D5B8B660182FB6A000812482 /* LFHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFHeaderView.h; sourceTree = "<group>"; };
+		D5B8B661182FB6A000812482 /* LFHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFHeaderView.m; sourceTree = "<group>"; };
+		D5B8B665182FBCE100812482 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		D5B8B666182FBCE100812482 /* lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock@2x.png"; sourceTree = "<group>"; };
 		D5D1ECF8182D625A0081066D /* LaFosca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaFosca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D1ECFB182D625A0081066D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5D1ECFD182D625A0081066D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +143,8 @@
 				D5B8B630182E48E200812482 /* LFRegisterViewController.m */,
 				D5B8B634182EC16200812482 /* LFBeachViewController.h */,
 				D5B8B635182EC16200812482 /* LFBeachViewController.m */,
+				D5B8B660182FB6A000812482 /* LFHeaderView.h */,
+				D5B8B661182FB6A000812482 /* LFHeaderView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -184,6 +193,8 @@
 				D5B8B652182FAAB200812482 /* circle.png */,
 				D5B8B656182FAE6800812482 /* flag.png */,
 				D5B8B657182FAE6800812482 /* flag@2x.png */,
+				D5B8B665182FBCE100812482 /* lock.png */,
+				D5B8B666182FBCE100812482 /* lock@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -357,6 +368,8 @@
 				D5B8B655182FAAE500812482 /* circle@2x.png in Resources */,
 				D5B8B64D182FA98000812482 /* lafoscabeach.jpg in Resources */,
 				D5B8B658182FAE6800812482 /* flag.png in Resources */,
+				D5B8B667182FBCE100812482 /* lock.png in Resources */,
+				D5B8B668182FBCE100812482 /* lock@2x.png in Resources */,
 				D5B8B633182E48FB00812482 /* LFRegisterViewController.xib in Resources */,
 				D5B8B624182D79B100812482 /* sun@2x.png in Resources */,
 				D5D1ED06182D625A0081066D /* InfoPlist.strings in Resources */,
@@ -421,6 +434,7 @@
 				D5D1ED08182D625A0081066D /* main.m in Sources */,
 				D5023BEC182D6CFE0090BA88 /* LFLoginViewController.m in Sources */,
 				D5B8B628182DAE9900812482 /* LFAPIClient.m in Sources */,
+				D5B8B662182FB6A000812482 /* LFHeaderView.m in Sources */,
 				D5B8B62B182DBA6900812482 /* LFUser.m in Sources */,
 				D5B8B62E182E42B400812482 /* DataModel.m in Sources */,
 				D5B8B637182EC16200812482 /* LFBeachViewController.m in Sources */,

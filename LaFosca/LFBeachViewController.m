@@ -8,6 +8,7 @@
 
 #import "LFBeachViewController.h"
 #import "LFAPIClient.h"
+#import "UIImage+Tint.h"
 
 @interface LFBeachViewController ()
 
@@ -40,9 +41,6 @@
 {
     UIBarButtonItem* logoutBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewControllerAnimated:)];
     [self.navigationItem setLeftBarButtonItem:logoutBarButtonItem];
-    
-    UIBarButtonItem* changeStatusBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cerrar playa" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewControllerAnimated:)];
-    [self.navigationItem setRightBarButtonItem:changeStatusBarButtonItem];
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle {
@@ -51,6 +49,7 @@
 
 - (void) getBeachData
 {
+    [self switchToState:LFBeachStateLoading];
     LFAPIClient* client = [LFAPIClient sharedClient];
     
     [client GET:@"state" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -59,10 +58,70 @@
 
         beach = [MTLJSONAdapter modelOfClass:LFBeach.class fromJSONDictionary:responseObject error:&error];
         
+        [self switchToState:beach.state];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+}
+
+- (void) switchToState:(LFBeachState) state
+{
+    [self.headerView switchState:state];
+
+    switch (state) {
+        case LFBeachStateLoading:
+        {
+            [self.navigationItem setRightBarButtonItem:nil];
+        }
+            break;
+            
+        case LFBeachStateOpen:
+        {
+            UIBarButtonItem* changeStatusBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cerrar playa" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewControllerAnimated:)];
+            [self.navigationItem setRightBarButtonItem:changeStatusBarButtonItem];
+            [self setFlagColor];
+        }
+            break;
+            
+        case LFBeachStateClosed:
+        {
+            UIBarButtonItem* changeStatusBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Abrir playa" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewControllerAnimated:)];
+            [self.navigationItem setRightBarButtonItem:changeStatusBarButtonItem];
+        }
+            break;
+            
+        default:
+            [self.navigationItem setRightBarButtonItem:nil];
+            break;
+    }
+}
+
+- (void) setFlagColor
+{
+    
+    UIColor* flagColor;
+    switch (beach.flag) {
+        case LFBeachGreenFlag:
+            
+            flagColor = [UIColor greenColor];
+            break;
+        case LFBeachRedFlag:
+            
+            flagColor = [UIColor redColor];
+            break;
+        case LFBeachYellowFlag:
+            
+            flagColor = [UIColor yellowColor];
+            break;
+            
+        default:
+            break;
+    }
+    
+    UIImage* flagImage = [UIImage imageNamed:@"flag.png"];
+    flagImage = [flagImage imageTintedWithColor:flagColor];
+    [self.headerView.centralButton setImage:flagImage forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,12 +130,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark Parallax
-
 -(void)setTableViewHeader
 {
     [self.tableView setTableHeaderView:self.headerView];
-
 }
 
 #pragma mark - UITableView Datasource
