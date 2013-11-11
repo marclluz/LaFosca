@@ -34,6 +34,7 @@
     [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
     [self setTableViewHeader];
     
+    [self switchToState:LFBeachStateLoading];
     [self getBeachData];
 }
 
@@ -49,7 +50,6 @@
 
 - (void) getBeachData
 {
-    [self switchToState:LFBeachStateLoading];
     LFAPIClient* client = [LFAPIClient sharedClient];
     
     [client GET:@"state" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -59,6 +59,36 @@
         beach = [MTLJSONAdapter modelOfClass:LFBeach.class fromJSONDictionary:responseObject error:&error];
         
         [self switchToState:beach.state];
+        
+        //reload data after 3 seconds
+        double delay = 3.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+           // [self getBeachData];
+        });
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+- (void) closeBeach
+{
+    LFAPIClient* client = [LFAPIClient sharedClient];
+
+    [client PUT:@"close" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+- (void) openBeach
+{
+    LFAPIClient* client = [LFAPIClient sharedClient];
+    
+    [client PUT:@"open" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -78,7 +108,7 @@
             
         case LFBeachStateOpen:
         {
-            UIBarButtonItem* changeStatusBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cerrar playa" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewControllerAnimated:)];
+            UIBarButtonItem* changeStatusBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cerrar playa" style:UIBarButtonItemStylePlain target:self action:@selector(closeBeach)];
             [self.navigationItem setRightBarButtonItem:changeStatusBarButtonItem];
             [self setFlagColor];
         }
@@ -86,7 +116,7 @@
             
         case LFBeachStateClosed:
         {
-            UIBarButtonItem* changeStatusBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Abrir playa" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewControllerAnimated:)];
+            UIBarButtonItem* changeStatusBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Abrir playa" style:UIBarButtonItemStylePlain target:self action:@selector(openBeach)];
             [self.navigationItem setRightBarButtonItem:changeStatusBarButtonItem];
         }
             break;
