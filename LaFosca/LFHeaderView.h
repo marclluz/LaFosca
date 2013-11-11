@@ -11,6 +11,7 @@
 
 @interface LFHeaderView : UIView
 
+@property (weak, nonatomic) IBOutlet UIView *statsView;
 @property (weak, nonatomic) IBOutlet UIButton *centralButton;
 @property (weak, nonatomic) IBOutlet UIButton *subtitleButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;

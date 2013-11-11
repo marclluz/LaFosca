@@ -24,6 +24,7 @@
     switch (state) {
         case LFBeachStateLoading:
             
+            [self.statsView setHidden:YES];
             [self.centralButton setEnabled:NO];
             [self.centralButton setImage:nil forState:UIControlStateNormal];
             [self.activityIndicator setHidden:NO];
@@ -33,6 +34,7 @@
             
         case LFBeachStateOpen:
         {
+            [self.statsView setHidden:NO];
             [self.centralButton setEnabled:YES];
             [self.activityIndicator setHidden:YES];
             [self.subtitleButton setTitle:@"Lanzar pelotas de nivea" forState:UIControlStateNormal];
@@ -45,6 +47,7 @@
             
         case LFBeachStateClosed:
         {
+            [self.statsView setHidden:YES];
             [self.centralButton setEnabled:NO];
             [self.activityIndicator setHidden:YES];
             [self.subtitleButton setTitle:@"Limpiar playa" forState:UIControlStateNormal];
