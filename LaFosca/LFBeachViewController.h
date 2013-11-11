@@ -13,11 +13,13 @@
 @interface LFBeachViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
 {
     LFBeach* beach;
+    BOOL 
 }
 
 @property (strong, nonatomic) IBOutlet LFHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)flagButtonPressed:(id)sender;
+- (IBAction)subButtonPressed:(id)sender;
 
 @end

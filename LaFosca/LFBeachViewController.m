@@ -112,6 +112,32 @@
     }];
 }
 
+- (void) cleanBeach
+{
+    LFAPIClient* client = [LFAPIClient sharedClient];
+    
+    [client POST:@"clean" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [self getBeachData];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+- (void) niveaRain
+{
+    LFAPIClient* client = [LFAPIClient sharedClient];
+    
+    [client POST:@"nivea-rain" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [self getBeachData];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
 #pragma mark UI interaction
 
 - (void) switchToState:(LFBeachState) state
@@ -189,6 +215,17 @@
                             nil];
     
     [actionSheet showInView:self.view];
+}
+
+- (IBAction)subButtonPressed:(id)sender {
+    
+    if (beach.state == LFBeachStateOpen) {
+        [self niveaRain];
+    }
+    else
+    {
+        [self cleanBeach];
+    }
 }
 
 - (void)didReceiveMemoryWarning
