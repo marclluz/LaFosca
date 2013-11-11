@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *centralButton;
 @property (weak, nonatomic) IBOutlet UIButton *subtitleButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *happinessLevelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dirtinessLevelLabel;
 
 - (void) switchState:(LFBeachState)state;
 

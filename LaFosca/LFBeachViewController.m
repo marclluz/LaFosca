@@ -48,6 +48,8 @@
     return UIStatusBarStyleDefault;
 }
 
+#pragma mark Server Requests
+
 - (void) getBeachData
 {
     LFAPIClient* client = [LFAPIClient sharedClient];
@@ -59,12 +61,12 @@
         beach = [MTLJSONAdapter modelOfClass:LFBeach.class fromJSONDictionary:responseObject error:&error];
         
         [self switchToState:beach.state];
-        
-        //reload data after 3 seconds
-        double delay = 3.0;
+        [self fillData];
+        //reload data every 5 seconds
+        double delay = 5.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-           // [self getBeachData];
+            [self getBeachData];
         });
         
         
@@ -79,6 +81,8 @@
 
     [client PUT:@"close" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        [self getBeachData];
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -90,10 +94,25 @@
     
     [client PUT:@"open" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        [self getBeachData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
+
+- (void) setFlag:(NSInteger)flagIndex
+{
+    NSDictionary* params = @{@"flag": [NSNumber numberWithInt:flagIndex]};
+    
+    LFAPIClient* client = [LFAPIClient sharedClient];
+    [client PUT:@"flag" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self getBeachData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+#pragma mark UI interaction
 
 - (void) switchToState:(LFBeachState) state
 {
@@ -127,6 +146,13 @@
     }
 }
 
+- (void) fillData
+{
+    [self.headerView.happinessLevelLabel setText:[NSString stringWithFormat:@"%@",beach.happiness]];
+    [self.headerView.dirtinessLevelLabel setText:[NSString stringWithFormat:@"%@",beach.dirtiness]];
+
+}
+
 - (void) setFlagColor
 {
     
@@ -154,6 +180,17 @@
     [self.headerView.centralButton setImage:flagImage forState:UIControlStateNormal];
 }
 
+- (IBAction)flagButtonPressed:(id)sender {
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Selecciona el color de la bandera:" delegate:self cancelButtonTitle:@"Cancelar" destructiveButtonTitle:nil otherButtonTitles:
+                            @"Bandera Verde",
+                            @"Bandera Amarilla",
+                            @"Bandera Roja",
+                            nil];
+    
+    [actionSheet showInView:self.view];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -163,6 +200,13 @@
 -(void)setTableViewHeader
 {
     [self.tableView setTableHeaderView:self.headerView];
+}
+
+#pragma mark - UIActionSheet Delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self setFlag:buttonIndex];
 }
 
 #pragma mark - UITableView Datasource
@@ -194,5 +238,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
+
 
 @end

@@ -30,6 +30,10 @@
 		D5B8B662182FB6A000812482 /* LFHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B661182FB6A000812482 /* LFHeaderView.m */; };
 		D5B8B667182FBCE100812482 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B665182FBCE100812482 /* lock.png */; };
 		D5B8B668182FBCE100812482 /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B666182FBCE100812482 /* lock@2x.png */; };
+		D5B8B66D183155A600812482 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B66B183155A600812482 /* smile.png */; };
+		D5B8B66E183155A600812482 /* smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B66C183155A600812482 /* smile@2x.png */; };
+		D5B8B6711831578000812482 /* dirty.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B66F1831578000812482 /* dirty.png */; };
+		D5B8B6721831578000812482 /* dirty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B6701831578000812482 /* dirty@2x.png */; };
 		D5D1ECFC182D625A0081066D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFB182D625A0081066D /* Foundation.framework */; };
 		D5D1ECFE182D625A0081066D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFD182D625A0081066D /* CoreGraphics.framework */; };
 		D5D1ED00182D625A0081066D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D1ECFF182D625A0081066D /* UIKit.framework */; };
@@ -89,6 +93,10 @@
 		D5B8B661182FB6A000812482 /* LFHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFHeaderView.m; sourceTree = "<group>"; };
 		D5B8B665182FBCE100812482 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		D5B8B666182FBCE100812482 /* lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock@2x.png"; sourceTree = "<group>"; };
+		D5B8B66B183155A600812482 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
+		D5B8B66C183155A600812482 /* smile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile@2x.png"; sourceTree = "<group>"; };
+		D5B8B66F1831578000812482 /* dirty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirty.png; sourceTree = "<group>"; };
+		D5B8B6701831578000812482 /* dirty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dirty@2x.png"; sourceTree = "<group>"; };
 		D5D1ECF8182D625A0081066D /* LaFosca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaFosca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D1ECFB182D625A0081066D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5D1ECFD182D625A0081066D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -185,6 +193,10 @@
 		D5B8B622182D79AA00812482 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D5B8B66F1831578000812482 /* dirty.png */,
+				D5B8B6701831578000812482 /* dirty@2x.png */,
+				D5B8B66B183155A600812482 /* smile.png */,
+				D5B8B66C183155A600812482 /* smile@2x.png */,
 				D5B8B64C182FA98000812482 /* lafoscabeach.jpg */,
 				D5B8B64E182FA98500812482 /* lafoscabeach@2x.jpg */,
 				D5B8B644182ECD6A00812482 /* sun.png */,
@@ -365,17 +377,21 @@
 				D5B8B646182ECD6A00812482 /* sun.png in Resources */,
 				D5B8B638182EC16200812482 /* LFBeachViewController.xib in Resources */,
 				D5023BED182D6CFE0090BA88 /* LFLoginViewController.xib in Resources */,
+				D5B8B66E183155A600812482 /* smile@2x.png in Resources */,
 				D5B8B655182FAAE500812482 /* circle@2x.png in Resources */,
 				D5B8B64D182FA98000812482 /* lafoscabeach.jpg in Resources */,
 				D5B8B658182FAE6800812482 /* flag.png in Resources */,
+				D5B8B66D183155A600812482 /* smile.png in Resources */,
 				D5B8B667182FBCE100812482 /* lock.png in Resources */,
 				D5B8B668182FBCE100812482 /* lock@2x.png in Resources */,
 				D5B8B633182E48FB00812482 /* LFRegisterViewController.xib in Resources */,
 				D5B8B624182D79B100812482 /* sun@2x.png in Resources */,
 				D5D1ED06182D625A0081066D /* InfoPlist.strings in Resources */,
+				D5B8B6721831578000812482 /* dirty@2x.png in Resources */,
 				D5B8B659182FAE6800812482 /* flag@2x.png in Resources */,
 				D5B8B653182FAAB200812482 /* circle.png in Resources */,
 				D5D1ED0E182D625A0081066D /* Images.xcassets in Resources */,
+				D5B8B6711831578000812482 /* dirty.png in Resources */,
 				D5B8B64F182FA98500812482 /* lafoscabeach@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

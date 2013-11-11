@@ -10,12 +10,14 @@
 #import "LFBeach.h"
 #import "LFHeaderView.h"
 
-@interface LFBeachViewController : UIViewController <UIScrollViewDelegate>
+@interface LFBeachViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
 {
     LFBeach* beach;
 }
 
 @property (strong, nonatomic) IBOutlet LFHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)flagButtonPressed:(id)sender;
 
 @end
