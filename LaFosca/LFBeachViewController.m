@@ -165,12 +165,12 @@
             [self.navigationItem setRightBarButtonItem:changeStatusBarButtonItem];
             [self setFlagColor];
             
-            //Kids change every time we reload, we stay with the first response
+            //Kids change every time we reload, we stay with the first response to show the filter feature
             if (!tableDataSource) {
-                tableDataSource = [NSMutableArray arrayWithArray:beach.kids];
-                
-                
-                [self.tableView reloadData];
+                tableDataSource = [NSArray arrayWithArray:beach.kids];
+                filteredDataSource = [NSMutableArray arrayWithArray:tableDataSource];
+
+                [self.kidsTableView reloadData];
 
             }
         }
@@ -248,16 +248,16 @@
 -(void)filterContentForSearchText:(NSString*)searchText {
 
     if (searchText.length == 0) {
-        tableDataSource = [NSMutableArray arrayWithArray:beach.kids];
+        filteredDataSource = [NSMutableArray arrayWithArray:tableDataSource];
 
     }
     else
     {
-        [tableDataSource removeAllObjects];
+        [filteredDataSource removeAllObjects];
         // Filter the array using NSPredicate
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[cd] %@",searchText];
         
-        tableDataSource = [NSMutableArray arrayWithArray:[beach.kids filteredArrayUsingPredicate:predicate]];
+        filteredDataSource = [NSMutableArray arrayWithArray:[tableDataSource filteredArrayUsingPredicate:predicate]];
     }
 }
 
@@ -269,7 +269,7 @@
 
 -(void)setTableViewHeader
 {
-    [self.tableView setTableHeaderView:self.headerView];
+    [self.kidsTableView setTableHeaderView:self.headerView];
 }
 
 #pragma mark - UIActionSheet Delegate
@@ -296,7 +296,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return tableDataSource.count;
+    
+    //everytime we call reloadData we sort de datasource array
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"age" ascending:YES];
+    [filteredDataSource sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    return filteredDataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -308,7 +313,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    LFKid* kid = [tableDataSource objectAtIndex:indexPath.row];
+    LFKid* kid = [filteredDataSource objectAtIndex:indexPath.row];
     
     cell.textLabel.text = kid.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ años", kid.age];
@@ -322,14 +327,14 @@
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     //hide the header to scroll the search bar to top
-    self.tableView.tableHeaderView = nil;
+    self.kidsTableView.tableHeaderView = nil;
     [searchBar setShowsCancelButton:YES animated:YES];
     
-    CGSize contentSize = self.tableView.contentSize;
+    CGSize contentSize = self.kidsTableView.contentSize;
     
     //add keyboard height
     contentSize.height += 216;
-    [self.tableView setContentSize:contentSize];
+    [self.kidsTableView setContentSize:contentSize];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
@@ -339,8 +344,8 @@
     [searchBar setShowsCancelButton:NO animated:NO];
     [searchBar resignFirstResponder];
     [self setTableViewHeader];
-    tableDataSource = [NSMutableArray arrayWithArray:beach.kids];
-    [self.tableView reloadData];
+    filteredDataSource = [NSMutableArray arrayWithArray:tableDataSource];
+    [self.kidsTableView reloadData];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -348,7 +353,7 @@
     
     [self filterContentForSearchText:searchBar.text];
     
-    [self.tableView reloadData];
+    [self.kidsTableView reloadData];
     [self.searchBar becomeFirstResponder];
 
 }

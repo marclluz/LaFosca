@@ -7,8 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LFBeachViewController">
             <connections>
                 <outlet property="headerView" destination="7VT-Fb-zJf" id="hU6-z4-dmJ"/>
+                <outlet property="kidsTableView" destination="vH3-IB-PFI" id="v89-pn-MSH"/>
                 <outlet property="searchBar" destination="h2d-o6-RCR" id="Wqm-4V-M0f"/>
-                <outlet property="tableView" destination="vH3-IB-PFI" id="tfA-Q7-LEl"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
