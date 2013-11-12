@@ -28,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isReloading = NO;
+    
     [self setNavigationBarButtons];
     [self setNeedsStatusBarAppearanceUpdate];
     [self.navigationController.navigationBar setTintColor:BASE_COLOR];
@@ -63,11 +65,16 @@
         [self switchToState:beach.state];
         [self fillData];
         //reload data every 5 seconds
-        double delay = 5.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [self getBeachData];
-        });
+        if(!isReloading)
+        {
+            isReloading = YES;
+            double delay = 5.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                isReloading = NO;
+                [self getBeachData];
+            });
+        }
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -156,6 +163,13 @@
             UIBarButtonItem* changeStatusBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cerrar playa" style:UIBarButtonItemStylePlain target:self action:@selector(closeBeach)];
             [self.navigationItem setRightBarButtonItem:changeStatusBarButtonItem];
             [self setFlagColor];
+            
+            //Kids change every time we reload, we stay with the first response
+            if (!tableDataSource) {
+                tableDataSource = [NSMutableArray arrayWithArray:beach.kids];
+                [self.tableView reloadData];
+
+            }
         }
             break;
             
@@ -228,6 +242,22 @@
     }
 }
 
+-(void)filterContentForSearchText:(NSString*)searchText {
+
+    if (searchText.length == 0) {
+        tableDataSource = [NSMutableArray arrayWithArray:beach.kids];
+
+    }
+    else
+    {
+        [tableDataSource removeAllObjects];
+        // Filter the array using NSPredicate
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[cd] %@",searchText];
+        
+        tableDataSource = [NSMutableArray arrayWithArray:[beach.kids filteredArrayUsingPredicate:predicate]];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -248,14 +278,22 @@
 
 #pragma mark - UITableView Datasource
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.searchBar;
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return tableDataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -264,16 +302,52 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-        
+    
+    NSDictionary* kid = [tableDataSource objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [kid objectForKey:@"name"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ años", [kid objectForKey:@"age"]];
+
     return cell;
 }
 
-#pragma mark - UITableView Delegate methods
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark - UISearchBar Delegate
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    //hide the header to scroll the search bar to top
+    self.tableView.tableHeaderView = nil;
+    [searchBar setShowsCancelButton:YES animated:YES];
     
+    CGSize contentSize = self.tableView.contentSize;
+    
+    //add keyboard height
+    contentSize.height += 216;
+    [self.tableView setContentSize:contentSize];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+
+    searchBar.text=@"";
+    [searchBar setShowsCancelButton:NO animated:NO];
+    [searchBar resignFirstResponder];
+    [self setTableViewHeader];
+    tableDataSource = [NSMutableArray arrayWithArray:beach.kids];
+    [self.tableView reloadData];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    
+    [self filterContentForSearchText:searchBar.text];
+    
+    [self.tableView reloadData];
+    [self.searchBar becomeFirstResponder];
+
 }
 
 
