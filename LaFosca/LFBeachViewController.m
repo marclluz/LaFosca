@@ -9,6 +9,7 @@
 #import "LFBeachViewController.h"
 #import "LFAPIClient.h"
 #import "UIImage+Tint.h"
+#import "LFKid.h"
 
 @interface LFBeachViewController ()
 
@@ -167,6 +168,8 @@
             //Kids change every time we reload, we stay with the first response
             if (!tableDataSource) {
                 tableDataSource = [NSMutableArray arrayWithArray:beach.kids];
+                
+                
                 [self.tableView reloadData];
 
             }
@@ -305,10 +308,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    NSDictionary* kid = [tableDataSource objectAtIndex:indexPath.row];
+    LFKid* kid = [tableDataSource objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [kid objectForKey:@"name"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ años", [kid objectForKey:@"age"]];
+    cell.textLabel.text = kid.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ años", kid.age];
 
     return cell;
 }

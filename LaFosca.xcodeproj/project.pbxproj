@@ -10,6 +10,7 @@
 		CA2E05A39BF34EE6B8FE19C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2DAD223B544C87A8314AB7 /* libPods.a */; };
 		D5023BEC182D6CFE0090BA88 /* LFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5023BEA182D6CFE0090BA88 /* LFLoginViewController.m */; };
 		D5023BED182D6CFE0090BA88 /* LFLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5023BEB182D6CFE0090BA88 /* LFLoginViewController.xib */; };
+		D51E17151832A421009DABE9 /* LFKid.m in Sources */ = {isa = PBXBuildFile; fileRef = D51E17141832A421009DABE9 /* LFKid.m */; };
 		D5B8B624182D79B100812482 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5B8B623182D79B100812482 /* sun@2x.png */; };
 		D5B8B628182DAE9900812482 /* LFAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B627182DAE9900812482 /* LFAPIClient.m */; };
 		D5B8B62B182DBA6900812482 /* LFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B8B62A182DBA6900812482 /* LFUser.m */; };
@@ -65,6 +66,8 @@
 		D5023BEA182D6CFE0090BA88 /* LFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLoginViewController.m; sourceTree = "<group>"; };
 		D5023BEB182D6CFE0090BA88 /* LFLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LFLoginViewController.xib; sourceTree = "<group>"; };
 		D5023BEF182D6F340090BA88 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		D51E17131832A421009DABE9 /* LFKid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFKid.h; sourceTree = "<group>"; };
+		D51E17141832A421009DABE9 /* LFKid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFKid.m; sourceTree = "<group>"; };
 		D5B8B623182D79B100812482 /* sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun@2x.png"; sourceTree = "<group>"; };
 		D5B8B626182DAE9900812482 /* LFAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFAPIClient.h; sourceTree = "<group>"; };
 		D5B8B627182DAE9900812482 /* LFAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFAPIClient.m; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 		D5023BE8182D6CD70090BA88 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D51E17131832A421009DABE9 /* LFKid.h */,
+				D51E17141832A421009DABE9 /* LFKid.m */,
 				D5B8B629182DBA6900812482 /* LFUser.h */,
 				D5B8B62A182DBA6900812482 /* LFUser.m */,
 				D5B8B62C182E42B400812482 /* DataModel.h */,
@@ -444,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D51E17151832A421009DABE9 /* LFKid.m in Sources */,
 				D5B8B65C182FAEF900812482 /* UIImage+Tint.m in Sources */,
 				D5B8B65F182FB0EF00812482 /* LFBeach.m in Sources */,
 				D5D1ED0C182D625A0081066D /* LFAppDelegate.m in Sources */,

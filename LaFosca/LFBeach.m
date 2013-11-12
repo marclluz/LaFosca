@@ -7,6 +7,7 @@
 //
 
 #import "LFBeach.h"
+#import "LFKid.h"
 
 @implementation LFBeach
 
@@ -27,5 +28,9 @@
                                                                            }];
 }
 
++ (NSValueTransformer *)kidsJSONTransformer
+{
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[LFKid class]];
+}
 
 @end
