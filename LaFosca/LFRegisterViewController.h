@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface LFRegisterViewController : UIViewController <UITextFieldDelegate>
 

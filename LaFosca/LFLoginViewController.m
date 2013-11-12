@@ -59,8 +59,27 @@
 
 - (IBAction)loginButtonPressed:(id)sender {
     
-    [self setButtonsEnabled:NO];
+    [self logIn];
     
+}
+
+- (void) setButtonsEnabled:(BOOL) boolean
+{
+    [self.loginButton setEnabled:boolean];
+    [self.registerButton setEnabled:boolean];
+}
+
+- (IBAction)registerButtonPressed:(id)sender {
+    
+    LFRegisterViewController* registerViewController = [[LFRegisterViewController alloc] init];
+    [self.navigationController pushViewController:registerViewController animated:YES];
+    
+}
+
+- (void) logIn
+{
+    [self setButtonsEnabled:NO];
+    [ProgressHUD show:@"Entrando"];
     LFAPIClient* client = [LFAPIClient sharedClient];
     
     [client setRequestSerializer:[AFHTTPRequestSerializer serializer]];
@@ -79,33 +98,51 @@
             LFBeachViewController *beachViewController = [[LFBeachViewController alloc] init];
             UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:beachViewController];
             [navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-            [self presentViewController:navController animated:YES completion:nil];
+            [self presentViewController:navController animated:YES completion:^{
+                
+                //reset textfields
+                [self.userTextField setText:@""];
+                [self.passwordTextField setText:@""];
+            }];
         }
         
         [self setButtonsEnabled:YES];
-
-
+        [ProgressHUD dismiss];
+        
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Parece que hay un error con los datos introducidos, por favor revisa tu usuario y contraseña" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [errorAlertView show];
         [self setButtonsEnabled:YES];
-
+        [ProgressHUD dismiss];
+        
     }];
-    
 }
 
-- (void) setButtonsEnabled:(BOOL) boolean
+#pragma mark UITextField Delegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.loginButton setEnabled:boolean];
-    [self.registerButton setEnabled:boolean];
+    
+    [self.scrollView setContentOffset:CGPointMake(0, 220) animated:YES];
 }
 
-- (IBAction)registerButtonPressed:(id)sender {
-    
-    LFRegisterViewController* registerViewController = [[LFRegisterViewController alloc] init];
-    [self.navigationController pushViewController:registerViewController animated:YES];
-    
+-(BOOL)textFieldShouldReturn:(UITextField*)textField;
+{
+    //Navigate through form
+    NSInteger nextTag = textField.tag + 1;
+    UIResponder* nextResponder = [self.view viewWithTag:nextTag];
+    if (nextResponder) {
+        [nextResponder becomeFirstResponder];
+    } else {
+        
+        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        [textField resignFirstResponder];
+        [self logIn];
+    }
+    return NO;
 }
+
+
 @end

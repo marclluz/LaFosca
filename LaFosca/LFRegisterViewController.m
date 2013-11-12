@@ -89,7 +89,9 @@
 }
 
 - (void) registerUser
-{    
+{
+    [ProgressHUD show:@"Registrando"];
+    
     NSDictionary* params = @{@"user":@{
                             @"username":self.userTextField.text,
                             @"password":self.passwordTextField.text}};
@@ -110,12 +112,15 @@
             [navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
             [self presentViewController:navController animated:YES completion:nil];
         }
+        
+        [ProgressHUD dismiss];
     
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Ha ocurrido un error al intentar registrar este usuario" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [errorAlertView show];
+        [ProgressHUD dismiss];
         
     }];
 }

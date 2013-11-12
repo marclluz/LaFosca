@@ -10,6 +10,7 @@
 #import "LFAPIClient.h"
 #import "UIImage+Tint.h"
 #import "LFKid.h"
+#import "DataModel.h"
 
 @interface LFBeachViewController ()
 
@@ -40,6 +41,12 @@
     [self getBeachData];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self showWelcomeMessage];
+
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     //we cancel all task before we leave
@@ -59,6 +66,14 @@
 
 - (UIStatusBarStyle) preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
+}
+
+- (void) showWelcomeMessage
+{
+    NSString* welcomeMessage = [NSString stringWithFormat:@"¡Hola %@!",[[[DataModel sharedInstance] user] userName]];
+    
+    [ProgressHUD showSuccess:welcomeMessage];
+
 }
 
 #pragma mark Server Requests
@@ -100,13 +115,20 @@
 {
     LFAPIClient* client = [LFAPIClient sharedClient];
 
+    [ProgressHUD show:@"Cerrando playa"];
+    
     [client PUT:@"close" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [ProgressHUD showSuccess:@"Playa cerrada"];
+
         
         [self getBeachData];
         
+        
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        
+        [ProgressHUD dismiss];
         UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido cerrar la playa" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [errorAlertView show];
@@ -118,11 +140,15 @@
 {
     LFAPIClient* client = [LFAPIClient sharedClient];
     
+    [ProgressHUD show:@"Abriendo playa"];
+    
     [client PUT:@"open" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        [ProgressHUD showSuccess:@"Playa abierta"];
+
         [self getBeachData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+        [ProgressHUD dismiss];
         UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido abrir la playa" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [errorAlertView show];
@@ -132,15 +158,19 @@
 
 - (void) setFlag:(NSInteger)flagIndex
 {
+    [ProgressHUD show:@"Cambiando bandera"];
+    
     NSDictionary* params = @{@"flag": [NSNumber numberWithInt:flagIndex]};
     
     LFAPIClient* client = [LFAPIClient sharedClient];
     [client PUT:@"flag" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [ProgressHUD showSuccess:@"Bandera cambiada"];
         [self getBeachData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        
-        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido canviar el color de la bandera" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [ProgressHUD dismiss];
+        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido cambiar el color de la bandera" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [errorAlertView show];
 
@@ -150,14 +180,19 @@
 
 - (void) cleanBeach
 {
+    
+    [ProgressHUD show:@"Limpiando playa"];
     LFAPIClient* client = [LFAPIClient sharedClient];
     
     [client POST:@"clean" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        [ProgressHUD showSuccess:@"Playa limpiada"];
+
         [self getBeachData];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+        [ProgressHUD dismiss];
         UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido limpiar la playa" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [errorAlertView show];
@@ -167,15 +202,17 @@
 
 - (void) niveaRain
 {
+    [ProgressHUD show:@"Tirando pelotas de nivea"];
     LFAPIClient* client = [LFAPIClient sharedClient];
     
     [client POST:@"nivea-rain" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        [ProgressHUD showSuccess:@"Pelotas tiradas"];
         [self getBeachData];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        
+        [ProgressHUD dismiss];
         UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se han podido tirar pelotas de nivea" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [errorAlertView show];

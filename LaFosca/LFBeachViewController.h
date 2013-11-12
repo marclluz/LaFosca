@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LFBeach.h"
 #import "LFHeaderView.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface LFBeachViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate, UISearchBarDelegate>
 {
