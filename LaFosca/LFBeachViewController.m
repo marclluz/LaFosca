@@ -29,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    isReloading = NO;
     
     [self setNavigationBarButtons];
     [self setNeedsStatusBarAppearanceUpdate];
@@ -41,6 +40,17 @@
     [self getBeachData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    //we cancel all task before we leave
+    LFAPIClient* client = [LFAPIClient sharedClient];
+
+    for (NSURLSessionTask *task in client.tasks) {
+        [task cancel];
+    }
+    
+    [timer invalidate];
+}
 - (void) setNavigationBarButtons
 {
     UIBarButtonItem* logoutBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewControllerAnimated:)];
@@ -58,6 +68,8 @@
     LFAPIClient* client = [LFAPIClient sharedClient];
     
     [client GET:@"state" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+
+        [timer invalidate];
         
         NSError *error = nil;
 
@@ -65,18 +77,12 @@
         
         [self switchToState:beach.state];
         [self fillData];
-        //reload data every 5 seconds
-        if(!isReloading)
-        {
-            isReloading = YES;
-            double delay = 5.0;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                isReloading = NO;
-                [self getBeachData];
-            });
-        }
         
+        timer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                             target:self
+                                           selector:@selector(getBeachData)
+                                           userInfo:nil
+                                            repeats:NO];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

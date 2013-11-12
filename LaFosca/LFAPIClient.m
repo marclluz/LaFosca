@@ -19,11 +19,6 @@ static NSString * const LFAPIBaseURLString = @"http://lafosca-beach.herokuapp.co
     dispatch_once(&onceToken, ^{
         _sharedClient = [[LFAPIClient alloc] initWithBaseURL:[NSURL URLWithString:LFAPIBaseURLString]];
         
-//        AFHTTPResponseSerializer *serializer = [[AFHTTPResponseSerializer alloc] init];
-//        
-//        [serializer setAcceptableContentTypes:[NSSet setWithObjects:@"text/html",@"text/json", @"application/json", nil]];
-//        [serializer set]
-        
         _sharedClient.responseSerializer  = [AFJSONResponseSerializer new];
         
         _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json", @"application/json", nil];

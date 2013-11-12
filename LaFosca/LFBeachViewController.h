@@ -16,7 +16,7 @@
     NSArray *tableDataSource;
     NSMutableArray *filteredDataSource;
 
-    BOOL isReloading;
+    NSTimer *timer;
 }
 
 @property (strong, nonatomic) IBOutlet LFHeaderView *headerView;
