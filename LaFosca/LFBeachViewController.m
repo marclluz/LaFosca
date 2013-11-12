@@ -77,7 +77,8 @@
         
         [self switchToState:beach.state];
         [self fillData];
-        
+
+        //reload data every 5 seconds
         timer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                              target:self
                                            selector:@selector(getBeachData)
@@ -85,6 +86,12 @@
                                             repeats:NO];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
+        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se han podido obtener los datos de la playa" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [errorAlertView show];
+
         
     }];
 }
@@ -99,6 +106,11 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+        
+        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido cerrar la playa" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [errorAlertView show];
+
     }];
 }
 
@@ -111,6 +123,10 @@
         [self getBeachData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido abrir la playa" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [errorAlertView show];
+
     }];
 }
 
@@ -122,6 +138,12 @@
     [client PUT:@"flag" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         [self getBeachData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
+        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido canviar el color de la bandera" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [errorAlertView show];
+
         
     }];
 }
@@ -136,6 +158,10 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se ha podido limpiar la playa" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [errorAlertView show];
+
     }];
 }
 
@@ -149,6 +175,11 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+        
+        UIAlertView* errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No se han podido tirar pelotas de nivea" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [errorAlertView show];
+
     }];
 }
 
