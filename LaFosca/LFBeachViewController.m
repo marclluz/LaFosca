@@ -60,12 +60,18 @@
 }
 - (void) setNavigationBarButtons
 {
-    UIBarButtonItem* logoutBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewControllerAnimated:)];
+    UIBarButtonItem* logoutBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut)];
     [self.navigationItem setLeftBarButtonItem:logoutBarButtonItem];
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
+}
+
+- (void) logOut
+{
+    [[DataModel sharedInstance] setUser:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) showWelcomeMessage
